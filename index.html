@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Probezeitbericht</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script>
+            function download(filename, text) {
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                element.setAttribute('download', filename);
+                element.style.display = 'none';
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+            }
+
+
+            function submitForm() {
+                var username = document.getElementById('username').value;
+                var filename = "Probezeitbericht_" + username + ".txt";
+                var inputs = document.querySelectorAll('input, select');
+                var labels = document.getElementsByTagName('label');
+                var text = '';
+                for (var i = 0; i < inputs.length; i++) {
+                    text += labels[i].textContent + ': ' + inputs[i].value + '\n';
+                }
+                download(filename, text);
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1 class="title_big">Probezeitbericht</h1>
+        <h4 class="title">Formular</h4>
+
+    <div class="center">
+        <div style="text-align: center; margin-top: 100px;">
+            <label style="font-family: sans-serif; font-size: 30pt;">Vorname:</label>
+            <input id="username" style="height: 30pt; margin-top: 10px;" type="text">
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Nachname:</label>
+            <input style="height: 30pt; margin-top: 10px;" type="text">
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Emailadresse:</label>
+            <input style="height: 30pt; margin-top: 10px;" type="email">
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Alter:</label>
+            <input style="height: 30pt; margin-top: 10px;" type="number" min="0" max="99">
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Beruf:</label>
+            <select style="height: 30pt; margin-top: 10px;">
+                <option >KV</option>
+                <option >Informatiker</option>
+                <option >Mediamatiker</option>
+                <option >ICT-Fachkraft</option>
+            </select>
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Lehrbeginn:</label>
+            <input style="height: 30pt; margin-top: 10px;" type="date">
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">wichtige Dokumente:</label>
+            <input style="height: 30pt; margin-top: 10px;" type="file">
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Gesamteindruck:</label>
+            <input style="height: 30pt; margin-top: 10px;" type="range" min="0" max="5">
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Fachkompetenz:</label>
+            <input style="height: 30pt; margin-top: 10px;" type="range" min="0" max="5">
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Methodenkompetenz:</label>
+            <input style="height: 30pt; margin-top: 10px;" type="range" min="0" max="5">
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Sozialkompetenz:</label>
+            <input style="height: 30pt; margin-top: 10px;" type="range" min="0" max="5">
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Selbstkompetenz:</label>
+            <input style="height: 30pt; margin-top: 10px;" type="range" min="0" max="5">
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Fazit:</label>
+            <select style="height: 30pt; margin-top: 10px;">
+                <option >wird gekündigt</option>
+                <option >Probezeit verlängert</option>
+                <option >keine Massnahmen nötig</option>
+            </select>
+            <br>
+            <label style="font-family: sans-serif; font-size: 30pt;">Bemerkungen:</label>
+            <br>
+            <input style="height: 50pt; margin-top: 10px; width: 500px;" type="text">
+            <br>
+        </div>
+        <button class="button" onclick="submitForm()">Senden</button>
+    </body>
+</html>
